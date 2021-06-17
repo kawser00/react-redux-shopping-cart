@@ -1,0 +1,11 @@
+@mixin light-black-box($area) {
+  grid-area: $area;
+  background-color: $light-black;
+  color: $white;
+}
+
+@mixin flex-prop($content, $items) {
+  display: flex;
+  justify-content:$content;
+  align-items:$items;
+}
