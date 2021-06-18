@@ -1,6 +1,8 @@
 @import "variables";
 @import "mixins";
 
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -13,9 +15,13 @@ body,
   padding: 0;
 }
 
-body, input, select, textarea {
+body,
+input,
+select,
+button,
+textarea {
   font-size: 1.6rem;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
 }
 
 .grid-container {
@@ -32,7 +38,7 @@ body, input, select, textarea {
     @include light-black-box(header);
     @include flex-prop(null, center);
     padding: 0.5rem;
-  
+
     a {
       color: $white;
       text-decoration: none;
@@ -46,9 +52,91 @@ body, input, select, textarea {
   main {
     grid-area: main;
   }
-
   footer {
     @include light-black-box(footer);
     @include flex-prop(center, center);
+  }
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+
+  .main {
+    flex: 3 60rem;
+  }
+  .sidebar {
+    flex: 1 20rem;
+  }
+}
+
+// products css----------------------
+.products {
+  @include flex-prop(center, center);
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  li {
+    flex: 1 1 29rem;
+    height: 47rem;
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .product {
+    @include flex-prop(space-between, null);
+    flex-direction: column;
+    height: 100%;
+
+    a {
+      text-align: center;
+      background: #ededed;
+      text-decoration: none;
+
+      &:hover {
+        color: $light-orange;
+      }
+    }
+    p {
+      background: $white;
+      margin: 0;
+      padding: 1.6rem 0px;
+      text-align: left;
+    }
+    img {
+      max-width: 37rem;
+      height: 37rem;
+      text-align: center;
+    }
+
+    &-price {
+      @include flex-prop(space-between, center);
+
+      div,
+      button {
+        text-align: center;
+        flex: 1;
+      }
+      div {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      button {
+        padding: 1rem;
+        border: 0.1rem solid $border-color;
+        cursor: pointer;
+        background-color: #f0f0f0;
+        border-radius: 3px;
+
+        &:hover {
+          border: 0.1rem solid #808080;
+        }
+      }
+      .button.primary {
+        background-color: $primary;
+      }
+    }
   }
 }
