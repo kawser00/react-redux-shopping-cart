@@ -6,6 +6,19 @@
 
 @mixin flex-prop($content, $items) {
   display: flex;
-  justify-content:$content;
-  align-items:$items;
+  justify-content: $content;
+  align-items: $items;
+}
+
+@mixin margin-padding($margin: 1, $padding: 1) {
+  @if $margin == null{
+    margin: $margin;
+    padding: $padding + rem;
+  } @else if ($padding == null) {
+    padding: $padding;
+    margin: $margin + rem;
+  } @else {
+    margin: $margin + rem;
+    padding: $padding + rem;
+  }
 }

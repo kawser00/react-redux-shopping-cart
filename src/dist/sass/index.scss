@@ -1,7 +1,6 @@
 @import "variables";
 @import "mixins";
 
-
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 html {
   font-size: 62.5%;
@@ -11,8 +10,7 @@ html {
 body,
 #root {
   height: 100vh;
-  margin: 0;
-  padding: 0;
+  @include margin-padding(0, 0);
 }
 
 body,
@@ -81,8 +79,7 @@ textarea {
   li {
     flex: 1 1 29rem;
     height: 47rem;
-    padding: 1rem;
-    margin: 1rem;
+    @include margin-padding(1, 1);
   }
 
   .product {
@@ -100,8 +97,8 @@ textarea {
       }
     }
     p {
+      @include margin-padding(0, 0);
       background: $white;
-      margin: 0;
       padding: 1.6rem 0px;
       text-align: left;
     }
@@ -124,7 +121,7 @@ textarea {
         font-weight: bold;
       }
       button {
-        padding: 1rem;
+        @include margin-padding(null, 1);
         border: 0.1rem solid $border-color;
         cursor: pointer;
         background-color: #f0f0f0;
@@ -138,5 +135,16 @@ textarea {
         background-color: $primary;
       }
     }
+  }
+}
+
+//filter CSS--------------------------------------
+.filter {
+  @include flex-prop(space-between, center);
+  @include margin-padding(1, 1);
+  border-bottom: 0.1rem solid $border-color;
+
+  div {
+    flex: 1;
   }
 }
