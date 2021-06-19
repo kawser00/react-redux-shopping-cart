@@ -120,22 +120,24 @@ textarea {
         font-size: 2rem;
         font-weight: bold;
       }
-      button {
-        @include margin-padding(null, 1);
-        border: 0.1rem solid $border-color;
-        cursor: pointer;
-        background-color: #f0f0f0;
-        border-radius: 3px;
-
-        &:hover {
-          border: 0.1rem solid #808080;
-        }
-      }
-      .button.primary {
-        background-color: $primary;
-      }
     }
   }
+}
+
+//button primary----------------------
+.button {
+  @include margin-padding(null, 1);
+  border: 0.1rem solid $border-color;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+
+  &:hover {
+    border: 0.1rem solid #808080;
+  }
+}
+.button.primary {
+  background-color: $primary;
 }
 
 //filter CSS--------------------------------------
@@ -145,6 +147,56 @@ textarea {
   border-bottom: 0.1rem solid $border-color;
 
   div {
+    flex: 1;
+  }
+}
+
+//Cart CSS--------------------------------------
+.cart--header {
+  border-bottom: 0.1rem solid $border-color;
+}
+
+.cart {
+  @include margin-padding(1, 1);
+  margin-top: 1.4rem;
+  margin-bottom: 0;
+  display: flex;
+
+  &__items {
+    @include margin-padding(null, 0);
+    width: 100%;
+    list-style-type: none;
+
+    img {
+      width: 5rem;
+    }
+    li {
+      display: flex;
+
+      div {
+        padding: 0.5rem;
+
+        &:last-child {
+          flex: 1;
+        }
+      }
+      .right {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.total {
+  @include flex-prop(space-between, center);
+  width: 100%;
+
+  div {
+    font-size: 2rem;
+  }
+
+  div,
+  button {
     flex: 1;
   }
 }
