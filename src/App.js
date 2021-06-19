@@ -39,6 +39,10 @@ export default class App extends Component {
     this.setState({ cartItems: updatedCartItems });
   };
 
+  createOrder = (order) => {
+    alert('Need to save for' + order.name)
+  }
+
   sortProducts = (e) => {
     const sort = e.target.value;
     this.setState({
@@ -125,6 +129,7 @@ export default class App extends Component {
               <Cart
                 removeFromCart={this.removeFromCart}
                 cartItems={this.state.cartItems}
+                createOrder={this.createOrder}
               />
             </div>
           </div>
