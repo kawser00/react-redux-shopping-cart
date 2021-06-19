@@ -127,7 +127,7 @@ textarea {
 //button primary----------------------
 .button {
   @include margin-padding(null, 1);
-  border: 0.1rem solid $border-color;
+  border: $border-gray;
   cursor: pointer;
   background-color: #f0f0f0;
   border-radius: 3px;
@@ -144,7 +144,7 @@ textarea {
 .filter {
   @include flex-prop(space-between, center);
   @include margin-padding(1, 1);
-  border-bottom: 0.1rem solid $border-color;
+  border-bottom: $border-gray;
 
   div {
     flex: 1;
@@ -153,7 +153,7 @@ textarea {
 
 //Cart CSS--------------------------------------
 .cart--header {
-  border-bottom: 0.1rem solid $border-color;
+  border-bottom: $border-gray;
 }
 
 .cart {
@@ -199,4 +199,29 @@ textarea {
   button {
      flex: 1;
   }
+}
+
+//checkout form----------------------
+form {
+  width: 100%;
+
+  .form-container {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+
+    li {
+      display: flex;
+      flex-direction:column;
+      @include margin-padding(null, 1);
+
+      input {
+        @include margin-padding(null, .9);
+        border: $border-gray;
+      }
+    }
+  }
+
+  
+
 }
