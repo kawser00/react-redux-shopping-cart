@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import data from "./data.json";
 import Products from "./components/Products";
 import Filter from "./components/Filter";
+import Cart from "./components/Cart";
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -12,10 +13,31 @@ export default class App extends Component {
 
     this.state = {
       products: latestOrder,
+      cartItems: [],
       size: "",
       sort: "",
     };
   }
+
+  addToCart = (product) => {
+    const cartItems = this.state.cartItems;
+    let alreadyInCart = false;
+    cartItems.forEach((item) => {
+      if (item._id === product._id) {
+        item.count++;
+        alreadyInCart = true;
+      }
+    });
+    if (!alreadyInCart) {
+      cartItems.push({ ...product, count: 1 });
+    }
+    this.setState({ cartItems });
+  };
+
+  removeFromCart = (id) => {
+    const updatedCartItems = this.state.cartItems.filter((x) => x._id !== id);
+    this.setState({ cartItems: updatedCartItems });
+  };
 
   sortProducts = (e) => {
     const sort = e.target.value;
@@ -52,7 +74,6 @@ export default class App extends Component {
     // +1 = accept and -1 = reject
     // a - b means lowest to highest
     // b - a means highest to lowest
-
   };
 
   filterProducts = (e) => {
@@ -95,9 +116,17 @@ export default class App extends Component {
                 filterProducts={this.filterProducts}
                 sortProducts={this.sortProducts}
               />
-              <Products products={this.state.products} />
+              <Products
+                addToCart={this.addToCart}
+                products={this.state.products}
+              />
             </div>
-            <div className="sidebar">Cart Details</div>
+            <div className="sidebar">
+              <Cart
+                removeFromCart={this.removeFromCart}
+                cartItems={this.state.cartItems}
+              />
+            </div>
           </div>
         </main>
         <footer>All right is reserved.</footer>
