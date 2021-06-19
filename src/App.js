@@ -10,10 +10,11 @@ export default class App extends Component {
     //make all products by latest order(higher _id that means add product that add at last will appear always in top)
     const allProducts = data.products;
     const latestOrder = allProducts.sort((a, b) => (a._id < b._id ? 1 : -1));
+    const itemsFromLocalStorage = JSON.parse(localStorage.getItem('cartItems'));
 
     this.state = {
       products: latestOrder,
-      cartItems: [],
+      cartItems: itemsFromLocalStorage ? itemsFromLocalStorage : [],
       size: "",
       sort: "",
     };
@@ -32,11 +33,13 @@ export default class App extends Component {
       cartItems.push({ ...product, count: 1 });
     }
     this.setState({ cartItems });
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
   };
 
   removeFromCart = (id) => {
     const updatedCartItems = this.state.cartItems.filter((x) => x._id !== id);
     this.setState({ cartItems: updatedCartItems });
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
   sortProducts = (e) => {
