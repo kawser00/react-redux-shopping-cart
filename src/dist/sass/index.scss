@@ -107,24 +107,25 @@ textarea {
       height: 37rem;
       text-align: center;
     }
-
-    &-price {
-      @include flex-prop(space-between, center);
-
-      div,
-      button {
-        text-align: center;
-        flex: 1;
-      }
-      div {
-        font-size: 2rem;
-        font-weight: bold;
-      }
-    }
   }
 }
 
-//button primary----------------------
+//product price css----------------------
+.product-price {
+  @include flex-prop(space-between, center);
+
+  div,
+  button {
+    text-align: center;
+    flex: 1;
+  }
+  div {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+
+//button primary css----------------------
 .button {
   @include margin-padding(null, 1);
   border: $border-gray;
@@ -221,7 +222,31 @@ form {
       }
     }
   }
+}
 
-  
+//product details----------------------
+.product-details {
+  @include flex-prop(space-between, null);
+  flex-wrap: wrap;
+  max-height: 90vh;
+
+  img {
+    max-height: 100vh;
+    max-width: 46rem;
+    margin: 0 auto;
+  }
+
+  &__description {
+    flex: 1 1;
+    @include margin-padding(1, null);
+  }
+}
+
+.close-modal {
+  position: absolute;
+  right: 1rem;
+  top:  2.5rem;
+  z-index: 1000;
+  cursor: pointer;
 
 }
