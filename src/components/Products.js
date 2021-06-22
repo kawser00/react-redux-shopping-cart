@@ -30,11 +30,11 @@ class Products extends Component {
     return (
       <>
         <Fade bottom cascade>
-          {!this.props.products ? (
+          {!this.props.filteredProducts ? (
             <div>Loading...</div>
           ) : (
             <ul className="products">
-              {this.props.products.map((product) => (
+              {this.props.filteredProducts.map((product) => (
                 <li key={product._id}>
                   <div className="product">
                     <a
@@ -103,6 +103,6 @@ class Products extends Component {
   }
 }
 
-export default connect((state) => ({ products: state.products.items }), {
+export default connect((state) => ({ filteredProducts: state.products.filteredItems }), {
   fetchProducts,
 })(Products);
